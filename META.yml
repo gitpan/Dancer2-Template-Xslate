@@ -1,0 +1,31 @@
+---
+abstract: 'Text::Xslate template engine for Dancer2'
+author:
+  - 'Richard Simões <rsimoes AT cpan DOT org>'
+build_requires:
+  Dancer2::Core::Hook: 0
+  File::Find: 0
+  File::Temp: 0
+  Module::Build: 0.3601
+  Test::More: 0
+configure_requires:
+  Module::Build: 0.3601
+dynamic_config: 0
+generated_by: 'Dist::Zilla version 4.300030, CPAN::Meta::Converter version 2.120921'
+license: mit
+meta-spec:
+  url: http://module-build.sourceforge.net/META-spec-v1.4.html
+  version: 1.4
+name: Dancer2-Template-Xslate
+requires:
+  Dancer2::Core::Role::Template: 0
+  Dancer2::Core::Types: 0
+  Dancer2::FileUtils: 0
+  Moo: 0
+  Text::Xslate: 0
+  perl: 5.008
+resources:
+  bugtracker: https://github.com/rsimoes/dancer2-template-xslate/issues
+  homepage: https://metacpan.org/release/Dancer2-Template-Xslate
+  repository: git://github.com/rsimoes/dancer2-template-xslate.git
+version: v0.0.1
