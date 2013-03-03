@@ -1,5 +1,6 @@
 package Dancer2::Template::Xslate;
 
+use v5.10;
 use strict;
 use warnings FATAL => "all";
 use utf8;
@@ -8,9 +9,10 @@ use Carp;
 use Moo;
 use Dancer2::Core::Types;
 use Dancer2::FileUtils qw(read_file_content);
+use File::Spec::Functions qw(splitpath);
 use Text::Xslate;
 
-our $VERSION = 'v0.0.1'; # TRIAL VERSION
+our $VERSION = 'v0.0.2'; # VERSION
 # ABSTRACT: Text::Xslate template engine for Dancer2
 
 with "Dancer2::Core::Role::Template";
@@ -25,14 +27,8 @@ has "+default_tmpl_ext" => (
 sub _build_engine {
     my ($self) = @_;
 
-    # Use only Text::Xslate's path-searching procedure:
-    my %config = %{ $self->config };
-    if ( my $views = $self->views ) {
-        $self->views(".");
-        %config = ( path => $views, %config);
-    }
-
-    return Text::Xslate->new(%config);
+    # Set a default path that is overridable by the engine config:
+    return Text::Xslate->new(path => ["/"], %{ $self->config });
 }
 
 sub render {
@@ -40,9 +36,12 @@ sub render {
 
     my $xslate = $self->engine;
     my $content = eval {
-        ref($tmpl) eq "SCALAR"
-            ? $xslate->render_string($$tmpl, $vars)
-            : $xslate->render($tmpl, $vars)
+        if ( ref($tmpl) eq "SCALAR" ) {
+            $xslate->render_string($$tmpl, $vars)
+        }
+        else {
+            $xslate->render($tmpl, $vars);
+        }
     };
 
     if ( my $error = $@ ) { croak $error }
@@ -65,7 +64,7 @@ C<config.yaml>:
     engines:
       xslate: { path: "views" }
 
-Application:
+A Dancer 2 application:
 
     use Dancer2;
 
@@ -78,16 +77,16 @@ Application:
 
 =over
 
-=item C<render($template, $tokens)>
+=item render($template, $tokens)
 
 Renders a template. C<$template> can be one of:
 
-=over
+=over 2
 
 =item *
 
-a string of the path to a template file (*.tx, not *.tt like the core template
-engines)
+a string of the path to a template file (*.tx, not *.tt like the core Dancer2
+template engines)
 
 =item *
 
