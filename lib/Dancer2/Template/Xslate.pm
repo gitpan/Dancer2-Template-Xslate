@@ -12,7 +12,7 @@ use Dancer2::FileUtils qw(read_file_content);
 use File::Spec::Functions qw(splitpath);
 use Text::Xslate;
 
-our $VERSION = 'v0.0.2'; # VERSION
+our $VERSION = 'v0.0.3'; # VERSION
 # ABSTRACT: Text::Xslate template engine for Dancer2
 
 with "Dancer2::Core::Role::Template";
@@ -60,9 +60,10 @@ Dancer2::Template::Xslate - Text::Xslate template engine for Dancer2
 
 C<config.yaml>:
 
-    template: xslate
+    template: Xslate
     engines:
-      xslate: { path: "views" }
+      template:
+        Xslate: { path: "views" }
 
 A Dancer 2 application:
 

@@ -21,7 +21,7 @@ my %module_build_args = (
     "Richard Sim\303\265es <rsimoes AT cpan DOT org>"
   ],
   "dist_name" => "Dancer2-Template-Xslate",
-  "dist_version" => "v0.0.2",
+  "dist_version" => "v0.0.3",
   "license" => "mit",
   "module_name" => "Dancer2::Template::Xslate",
   "recommends" => {},

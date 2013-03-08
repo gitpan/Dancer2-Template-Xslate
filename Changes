@@ -1,5 +1,8 @@
 Revision history for Dancer2-Template-Xslate
 
+v0.0.3    2013-03-07 20:20:53 CST6CDT
+    - Fixed configuration example in POD.
+
 v0.0.2    2013-03-03 14:28:01 CST6CDT
     - Improved accomodatation of using either Dancer's "views" or
       Xslate's "path" configuration options.
