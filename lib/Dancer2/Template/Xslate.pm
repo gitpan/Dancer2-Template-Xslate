@@ -8,11 +8,13 @@ use utf8;
 use Moo;
 
 use Carp qw(croak);
+use Dancer2 0.06 ();
 use Dancer2::Core::Types qw(InstanceOf);
 use Text::Xslate;
 use File::Spec::Functions qw(abs2rel file_name_is_absolute);
 
-our $VERSION = 'v0.0.4'; # TRIAL VERSION
+
+our $VERSION = 'v0.0.5'; # VERSION
 # ABSTRACT: Text::Xslate template engine for Dancer2
 
 with 'Dancer2::Core::Role::Template';

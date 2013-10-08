@@ -17,20 +17,19 @@ my %module_build_args = (
     "Richard Sim\303\265es <rsimoes AT cpan DOT org>"
   ],
   "dist_name" => "Dancer2-Template-Xslate",
-  "dist_version" => "v0.0.4",
+  "dist_version" => "v0.0.5",
   "license" => "mit",
   "module_name" => "Dancer2::Template::Xslate",
   "recommends" => {},
   "recursive_test_files" => 1,
   "requires" => {
-    "Dancer2" => "0.03",
+    "Dancer2" => "0.06",
     "Moo" => 0,
     "Text::Xslate" => 0,
     "perl" => "v5.10.0"
   },
   "script_files" => [],
   "test_requires" => {
-    "Dancer2::Core::Hook" => 0,
     "File::Spec" => 0,
     "IO::Handle" => 0,
     "IPC::Open3" => 0,
