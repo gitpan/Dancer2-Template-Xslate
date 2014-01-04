@@ -14,7 +14,7 @@ use Text::Xslate;
 use File::Spec::Functions qw(abs2rel file_name_is_absolute);
 
 
-our $VERSION = 'v0.0.5'; # VERSION
+our $VERSION = 'v0.0.6'; # VERSION
 # ABSTRACT: Text::Xslate template engine for Dancer2
 
 with 'Dancer2::Core::Role::Template';
@@ -50,7 +50,7 @@ sub render {
         }
         else {
             my $rel_path = file_name_is_absolute($tmpl)
-                ? abs2rel($tmpl)
+                ? abs2rel($tmpl, $self->config->{location})
                 : $tmpl;
             $xslate->render($rel_path, $vars);
         }
